@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-in">
+    <div>
+      <h1><span class="blip"></span>Token Launch Radar</h1>
+      <p class="tagline">Protocols that record no token yet, priced as if they launched today — and the farm plan for each one.</p>
+    </div>
+    <div class="stamp" id="stamp"></div>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section class="controls" id="controls" aria-label="Board controls">
+  <label class="ctl grow">Search
+    <input id="q" type="search" placeholder="Protocol name or slug…" autocomplete="off">
+  </label>
+  <label class="ctl">Category
+    <select id="cat"></select>
+  </label>
+  <label class="ctl">Chain
+    <select id="chain"></select>
+  </label>
+  <label class="ctl">Min TVL
+    <select id="mintvl">
+      <option value="0">Any size</option>
+      <option value="10000000">$10M+</option>
+      <option value="50000000">$50M+</option>
+      <option value="250000000">$250M+</option>
+      <option value="1000000000">$1B+</option>
+    </select>
+  </label>
+  <label class="ctl">Sort by
+    <select id="sort">
+      <option value="implied">Implied value</option>
+      <option value="tvl">TVL</option>
+      <option value="change">7d change</option>
+      <option value="age">Age (oldest first)</option>
+      <option value="multiple">Category multiple</option>
+    </select>
+  </label>
+  <label class="ctl check">
+    <input id="watch" type="checkbox"> Watchlist only
+  </label>
+  <div class="count" id="count"></div>
+</section>
+
+<section id="detail" class="detail" hidden></section>
+
+<main>
+  <table class="board" id="board">
+    <thead>
+      <tr>
+        <th class="num">#</th><th>Protocol</th><th>Chains</th>
+        <th class="num">TVL</th><th class="num">7d</th><th class="num">Age</th>
+        <th class="num">Multiple</th><th class="num">Implied value</th><th>Farm capital</th><th></th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="empty" id="empty" hidden>No protocol matches those filters. Loosen one and the board fills again.</p>
+</main>
+
+<section class="method" id="method">
+  <h2>How each price is made</h2>
+  <p id="method-text"></p>
+  <div class="method-grid">
+    <div>
+      <h3>Category multiples, calibrated from this snapshot</h3>
+      <table class="mini" id="calibration"></table>
+    </div>
+    <div>
+      <h3>Live anchors — tokens that already trade</h3>
+      <table class="mini" id="live"></table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Implied value is this board's own model claim: what a token might be worth if the protocol's record stayed as it is. It is not a prediction that a token will be issued, or when. “Records no token” is DefiLlama's record, not proof none exists. Farm plans carry real cost and real risk; size them accordingly.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
